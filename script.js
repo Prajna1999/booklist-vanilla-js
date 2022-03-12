@@ -10,6 +10,8 @@ class Book{
 // Class to handle UI tasks.
 class UI{
     // Dont want to be instanitated everytime. 
+    // This static method is required so that book list does not get recycled 
+    // everytime the page refreshes. Objects to be added to the local memory.
     static displayBoooks(){
         const storedBooks=[
             // {
@@ -26,6 +28,20 @@ class UI{
         const books=storedBooks;
         books.forEach((book)=>UI.addBookToList(book));
     }
+    // Add a clear filed method.
+    static clearFields(){
+        document.querySelector("#title").value="";
+        document.querySelector("#author").value="";
+        document.querySelector("#isbn").value="";
+
+    }
+    // Add a delete functioa
+    static deleteBook(el){
+        
+        if(el.classList.contains("delete")){
+            el.parentElement.parentElement.remove();
+        }
+    }
     // add book to the UI
     static addBookToList(book){
         // create row to put inside the tbody..
@@ -38,7 +54,7 @@ class UI{
            <td>${book.title}</td> 
            <td>${book.author}</td>
            <td>${book.isbn}</td>
-           <td><a href="#" class="btn-small red lighten-1 white-text">X</td>
+           <td><a href="#" class="btn-small red lighten-1 white-text delete">X</td>
         
         
         `;
@@ -56,9 +72,19 @@ document.querySelector("#book-form").addEventListener("submit", (e)=>{
     const isbn=document.querySelector('#isbn').value;
 
     // create a book object (class).
-    const book=new Book(title, author, isbn );
-    UI.displayBoooks();
+    const book=new Book(title, author, isbn);
 
+    // Add to the list and show.
+    UI.addBookToList(book);
+
+    // clear form fileds after submitting.
+    UI.clearFields();
+
+})
+
+// Event: delete event.
+document.querySelector("#book-list").addEventListener('click', (e)=>{
+    UI.deleteBook(e.target);
 })
 
 
