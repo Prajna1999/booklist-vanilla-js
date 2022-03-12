@@ -21,16 +21,49 @@
         </div>
 
         <form  class="row">
-          <div class="input-field col s6">
-            <label for="">Book Name
+          <div class="input-field col s12">
+            <label for="bookname">Book Name </label>
               
-            </label>
-            <input class="form-controls-2" type="text" name="text" id="bookname">
+            
+            <input class="form-control" type="text" name="bookname" id="bookname">
             
            
           </div>
+          <div class="input-field col s12">
+            <label for="Author Name">Author Name</label>
+              
+            
+            <input class="form-control" type="text" name="author" id="Author Name">
+            
+           
+          </div>
+          <div class="input-field col s12">
+            <label for="ISBN">ISBN</label>
+              
+            
+            <input class="form-control" type="text" name="isbn" id="ISBN">
+            
+           
+          </div>
+
+          <button type="submit" class="col s6 offset-s3 btn waves-effect waves-light">Submit</button>
           
         </form>
+        <table class="striped table ">
+          <thead style="border-bottom: 1px solid grey;">
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>ISBN</th>
+              <th></th>
+            </tr>
+           
+            
+          </thead>
+          <tbody id="book-list">
+             
+          </tbody>
+        </table>
 
         
     </div>
@@ -39,5 +72,6 @@
 
 
     <script src="/materialize/js/materialize.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
