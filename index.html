@@ -20,12 +20,12 @@
        <h3 class="center-align"><i class="fas fa-book-open" style=""></i>My<span class="blue-text">Book</span>list</h3>
         </div>
 
-        <form  class="row">
+        <form  class="row" id="book-form">
           <div class="input-field col s12">
             <label for="bookname">Book Name </label>
               
             
-            <input class="form-control" type="text" name="bookname" id="bookname">
+            <input class="form-control" type="text" name="bookname" id="title">
             
            
           </div>
@@ -33,15 +33,15 @@
             <label for="Author Name">Author Name</label>
               
             
-            <input class="form-control" type="text" name="author" id="Author Name">
+            <input class="form-control" type="text" name="author" id="author">
             
            
           </div>
           <div class="input-field col s12">
-            <label for="ISBN">ISBN</label>
+            <label for="ISBN">ISBN#</label>
               
             
-            <input class="form-control" type="text" name="isbn" id="ISBN">
+            <input class="form-control" type="text" name="isbn" id="isbn">
             
            
           </div>
@@ -61,6 +61,7 @@
             
           </thead>
           <tbody id="book-list">
+             <!-- Add via UI class in JS. -->
              
           </tbody>
         </table>
