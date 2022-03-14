@@ -77,6 +77,42 @@ class UI{
         list.appendChild(row);
     }
 }
+// local storage.
+class Store{
+    static getBooks(){
+        let books;
+        if(!localStorage.getItem('books')){
+            books=[];
+        }else{
+            // As string data types.
+            books=JSON.parse(localStorage.getItem('books'));
+        }
+    return books;
+
+    }
+    static setBooks(book){
+        const books=Store.getBooks();
+        books.push(book);
+
+        localStorage.setItem('books', JSON.stringify(books));
+
+    }
+    static removeBooks(isbn){
+        const books=Store.getBooks(); //AN array object
+
+        // loop through each book in the JSON object.
+        books.forEach((book, index)=>{
+            if(book.isbn===isbn) {
+                books.splice(index,1);
+
+            }
+        });
+        localStorage.setItem('books', JSON.stringify(books));
+
+    }
+
+
+}
 // event: display books.
 document.addEventListener("DOMContentLoaded", UI.displayBoooks);
 
