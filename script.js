@@ -38,8 +38,18 @@ class UI{
     // show alert messages.
     static showMessage(message){
         const alertDiv= document.createElement('div');
-        alertDiv.className='col s6 offset-s3 red darken-2';
+        alertDiv.className=('col s4 offset-s3 red darken-2 white-text');
         alertDiv.appendChild(document.createTextNode(message));
+
+        // import form element.
+        const container=document.querySelector(".container");
+        const form=document.querySelector("#book-form");
+        container.insertBefore(alertDiv, form);
+
+        // Vanish after 3 seconds from the UI.
+        setTimeout(()=>alertDiv.remove(), 1000)
+
+
     }
     // Add a delete functioa
     static deleteBook(el){
@@ -79,11 +89,9 @@ document.querySelector("#book-form").addEventListener("submit", (e)=>{
 
     //Validation. All book form fields must be filled.
     if(title==="" || author==="" || isbn===""){
-    //  const alertDiv=  document.createElement('div');
-    //  const alertText=document.createTextNode("sdfsdhfop");
-    //  alertDiv.appendChild(alertText);
-    // alertDiv.innerText="Something";
-    alert("Fill in every field, you shithead.")
+
+   
+        UI.showMessage("Fill Every Field you shithead");
    
         
     }else{
