@@ -35,6 +35,12 @@ class UI{
         document.querySelector("#isbn").value="";
 
     }
+    // show alert messages.
+    static showMessage(message){
+        const alertDiv= document.createElement('div');
+        alertDiv.className='col s6 offset-s3 red darken-2';
+        alertDiv.appendChild(document.createTextNode(message));
+    }
     // Add a delete functioa
     static deleteBook(el){
         
@@ -71,7 +77,17 @@ document.querySelector("#book-form").addEventListener("submit", (e)=>{
     const author=document.querySelector("#author").value;
     const isbn=document.querySelector('#isbn').value;
 
-    // create a book object (class).
+    //Validation. All book form fields must be filled.
+    if(title==="" || author==="" || isbn===""){
+    //  const alertDiv=  document.createElement('div');
+    //  const alertText=document.createTextNode("sdfsdhfop");
+    //  alertDiv.appendChild(alertText);
+    // alertDiv.innerText="Something";
+    alert("Fill in every field, you shithead.")
+   
+        
+    }else{
+            // instantiate a book object (class).
     const book=new Book(title, author, isbn);
 
     // Add to the list and show.
@@ -79,6 +95,10 @@ document.querySelector("#book-form").addEventListener("submit", (e)=>{
 
     // clear form fileds after submitting.
     UI.clearFields();
+    }
+
+
+
 
 })
 
