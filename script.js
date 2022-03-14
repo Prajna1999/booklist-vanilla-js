@@ -13,19 +13,8 @@ class UI{
     // This static method is required so that book list does not get recycled 
     // everytime the page refreshes. Objects to be added to the local memory.
     static displayBoooks(){
-        const storedBooks=[
-            // {
-            //     title:"Book One",
-            //     author: 'John Doe',
-            //     isbn:'23432432'
-            // },
-            // {
-            //     title:"Book Two",
-            //     author: "Jane Doe",
-            //     isbn:"21308"
-            // }
-        ];
-        const books=storedBooks;
+       
+        const books=Store.getBooks();
         books.forEach((book)=>UI.addBookToList(book));
     }
     // Add a clear filed method.
@@ -90,7 +79,7 @@ class Store{
     return books;
 
     }
-    static setBooks(book){
+    static addBooks(book){
         const books=Store.getBooks();
         books.push(book);
 
@@ -137,6 +126,9 @@ document.querySelector("#book-form").addEventListener("submit", (e)=>{
     // Add to the list and show.
     UI.addBookToList(book);
 
+    // Add book to the localStorage.
+    Store.addBooks(book);
+
     // clear form fileds after submitting.
     UI.clearFields();
     }
@@ -149,6 +141,9 @@ document.querySelector("#book-form").addEventListener("submit", (e)=>{
 // Event: delete event.
 document.querySelector("#book-list").addEventListener('click', (e)=>{
     UI.deleteBook(e.target);
+
+    // remove from the local storage
+    Store.removeBooks(e.target.parentElement.previousElementSibling.textContent);
 })
 
 
