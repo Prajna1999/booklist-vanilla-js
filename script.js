@@ -27,7 +27,7 @@ class UI{
     // show alert messages.
     static showMessage(message){
         const alertDiv= document.createElement('div');
-        alertDiv.className=('col s4 offset-s3 red darken-2 white-text');
+        alertDiv.className=('toast-container');
         alertDiv.appendChild(document.createTextNode(message));
 
         // import form element.
